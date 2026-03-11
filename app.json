@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "cocktail-app-react-native",
+    "slug": "cocktail-app-react-native",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
