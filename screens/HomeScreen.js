@@ -18,7 +18,7 @@ const HomeScreen = () => {
 
             </FlatList>
              <TouchableOpacity style={styles.button} onPress ={() => dispatch(fetchRandomCocktail())}>
-              <Text>Surprise Cocktail</Text>
+     <Text style={styles.buttonText}>Surprise Cocktail</Text>
       </TouchableOpacity>
         </View>
     );
