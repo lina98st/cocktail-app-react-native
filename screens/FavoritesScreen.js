@@ -1,19 +1,16 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { removeFavorite } from '../features/favorites/favoritesSlice';
 
-const favoritesSlice = createSlice({
-    name: 'favorites',
-    initialState: [],
-    reducers: {
-        addFavorite: (state, action) => {
-            state.push(action.payload);
-        },
-        removeFavorite: (state, action) => {
-            return state.filter(
-                (cocktail) => cocktail.idDrink !== action.payload.idDrink
-            );
-        },
-    },
-});
+const FavoritesScreen = () => {
 
-export const { addFavorite, removeFavorite } = favoritesSlice.actions;
-export default favoritesSlice.reducer;
+    
+return (
+<FlatList>
+
+</FlatList>
+)
+}
+
+export default FavoritesScreen;
