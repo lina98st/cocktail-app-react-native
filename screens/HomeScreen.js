@@ -9,7 +9,7 @@ const HomeScreen = () => {
     const cocktails = useSelector((state) => state.cocktails.cocktailsArray);
 
     return (
-        <View>
+        <View style={styles.container}>
             <FlatList
             data={cocktails}
             renderItem={({ item }) => <CocktailCard cocktail={item} />}
@@ -23,5 +23,25 @@ const HomeScreen = () => {
         </View>
     );
 };
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#0f1a14',
+        padding: 10,
+    },
+    button: {
+        backgroundColor: '#1f5c3f',
+        padding: 12,
+        borderRadius: 8,
+        alignItems: 'center',
+        margin: 10,
+    },
+    buttonText: {
+        color: '#eaf5ef',
+        fontWeight: 'bold',
+        fontSize: 16,
+    },
+});
 
 export default HomeScreen;
