@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { fetchRandomCocktail } from '../features/cocktails/cocktailsSlice';
 import CocktailCard from '../components/CocktailCard';
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
     const dispatch = useDispatch();
     const cocktails = useSelector((state) => state.cocktails.cocktailsArray);
 
@@ -12,8 +12,8 @@ const HomeScreen = () => {
         <View style={styles.container}>
             <FlatList
             data={cocktails}
-            renderItem={({ item }) => <CocktailCard cocktail={item} />}
-            keyExtractor={(item) => item.idDrink}
+          renderItem={({ item }) => <CocktailCard cocktail={item} navigation={navigation} />}
+     keyExtractor={(item, index) => item.idDrink + index}
             >
 
             </FlatList>

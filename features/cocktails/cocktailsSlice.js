@@ -100,4 +100,4 @@ const cocktailSlice = createSlice({
     }
 });
 
-export const cocktailsReducer = cocktailsSlice.reducer;
+export const cocktailsReducer = cocktailSlice.reducer;
