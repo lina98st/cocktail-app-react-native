@@ -34,12 +34,12 @@ export const fetchInitialCocktails = createAsyncThunk(
 export const fetchRandomCocktail = createAsyncThunk(
     'cocktails/fetchRandomCocktail',
     async () => {
-        const response = await fetch(`${baseUrl}random.php`);
-        if (!response.ok) {
-            return Promise.reject('Unable to fetch, status: ' + response.status);
-        }
+        const response = await fetch(`${baseUrl}filter.php?c=Cocktail`);
         const data = await response.json();
-        return data.drinks[0];
+        const shuffled = data.drinks.sort(() => Math.random() - 0.5);
+        const randomId = shuffled[0].idDrink;
+        const detail = await fetch(`${baseUrl}lookup.php?i=${randomId}`).then(r => r.json());
+        return detail.drinks[0];
     }
 );
 
