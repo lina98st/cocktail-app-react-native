@@ -33,11 +33,36 @@ const HomeNavigator = () => {
 };
 
 const FavoritesNavigator = () => {
+        const Stack = createStackNavigator();
 
+
+    return (
+        <Stack.Navigator initialRouteName='Favorites'>
+            <Stack.Screen
+                name='Favorites'
+                component={FavoritesScreen}
+                options={{ title: 'Favorites' }}
+            />
+                    </Stack.Navigator>
+    );
 }
 
-const Main = () => {
 
+const Main = () => {
+const dispatch = useDispatch();
+
+useEffect(() => {
+dispatch(fetchInitialCocktails());
+}, [dispatch]);
+
+return (
+    <View style= {{ flex: 1 }}>
+        <ButtomTabNav.Navigator>
+              <ButtomTabNav.Screen name='HomeNav' component={HomeNavigator} />
+                <ButtomTabNav.Screen name='FavoritesNav' component={FavoritesNavigator} />
+        </ButtomTabNav.Navigator>
+    </View>
+)
 }
 
 export default Main;
