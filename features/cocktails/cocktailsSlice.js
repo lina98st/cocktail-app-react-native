@@ -1,49 +1,47 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { baseUrl } from '../../shared/baseUrl';
 
-
-//User can look for cocktails
+// User can look for cocktails
 export const fetchCocktail = createAsyncThunk(
     'cocktails/fetchCocktails',
-async (searchTerm) => {
-    const response = await fetch(`${baseUrl}search.php?s=${searchTerm}`)
+    async (searchTerm) => {
+        const response = await fetch(`${baseUrl}search.php?s=${searchTerm}`);
         if (!response.ok) {
-            return Promise.reject(
-                'Unable to fetch, status: ' + response.status
-            )
-                    }
-const data = await response.json();
-return data.drinks;
+            return Promise.reject('Unable to fetch, status: ' + response.status);
+        }
+        const data = await response.json();
+        return data.drinks;
     }
-)
+);
 
-//fetches 6 random cocktails
+// Fetches 6 different cocktails
 export const fetchInitialCocktails = createAsyncThunk(
     'cocktails/fetchInitialCocktails',
-async () => {
-    const promises = Array.from({ length: 6 }, () =>
-        fetch(`${baseUrl}random.php`).then((res) => res.json())
-    );
-    const results = await Promise.all(promises);
-    return results.map((result) => result.drinks[0]);
-}
-)
+    async () => {
+        const response = await fetch(`${baseUrl}filter.php?c=Cocktail`);
+        const data = await response.json();
+        const shuffled = data.drinks.sort(() => Math.random() - 0.5);
+        const ids = shuffled.slice(0, 6).map(d => d.idDrink);
+        const details = await Promise.all(
+            ids.map(id => fetch(`${baseUrl}lookup.php?i=${id}`).then(r => r.json()))
+        );
+        return details.map(d => d.drinks[0]);
+    }
+);
 
-//User can look for random cocktail
+
+// User can look for random cocktail
 export const fetchRandomCocktail = createAsyncThunk(
     'cocktails/fetchRandomCocktail',
     async () => {
-        const response = await fetch(`${baseUrl}random.php`)
+        const response = await fetch(`${baseUrl}random.php`);
         if (!response.ok) {
-            return Promise.reject(
-                'Unable to fetch, status: ' + response.status
-            )
-                    }
-const data = await response.json();
-return data.drinks[0];
+            return Promise.reject('Unable to fetch, status: ' + response.status);
+        }
+        const data = await response.json();
+        return data.drinks[0];
     }
-)
-
+);
 
 const cocktailSlice = createSlice({
     name: 'cocktails',
@@ -56,46 +54,40 @@ const cocktailSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchInitialCocktails.pending, (state) => {
-            state.isLoading = true;
+                state.isLoading = true;
             })
-     .addCase(fetchInitialCocktails.fulfilled, (state, action) => {
+            .addCase(fetchInitialCocktails.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.errMess = null;
                 state.cocktailsArray = action.payload;
             })
-     .addCase(fetchInitialCocktails.rejected, (state, action) => {
+            .addCase(fetchInitialCocktails.rejected, (state, action) => {
                 state.isLoading = false;
-                state.errMess = action.error
-                    ? action.error.message
-                    : 'Fetch failed';
+                state.errMess = action.error ? action.error.message : 'Fetch failed';
             })
-    .addCase(fetchRandomCocktail.pending, (state) => {
-            state.isLoading = true;
+            .addCase(fetchRandomCocktail.pending, (state) => {
+                state.isLoading = true;
             })
-     .addCase(fetchRandomCocktail.fulfilled, (state, action) => {
+            .addCase(fetchRandomCocktail.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.errMess = null;
-    state.cocktailsArray = [action.payload, ...state.cocktailsArray];
+                state.cocktailsArray = [action.payload, ...state.cocktailsArray];
             })
-     .addCase(fetchRandomCocktail.rejected, (state, action) => {
+            .addCase(fetchRandomCocktail.rejected, (state, action) => {
                 state.isLoading = false;
-                state.errMess = action.error
-                    ? action.error.message
-                    : 'Fetch failed';
+                state.errMess = action.error ? action.error.message : 'Fetch failed';
             })
-                .addCase(fetchCocktail.pending, (state) => {
-            state.isLoading = true;
+            .addCase(fetchCocktail.pending, (state) => {
+                state.isLoading = true;
             })
-     .addCase(fetchCocktail.fulfilled, (state, action) => {
+            .addCase(fetchCocktail.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.errMess = null;
                 state.cocktailsArray = action.payload;
             })
-     .addCase(fetchCocktail.rejected, (state, action) => {
+            .addCase(fetchCocktail.rejected, (state, action) => {
                 state.isLoading = false;
-                state.errMess = action.error
-                    ? action.error.message
-                    : 'Fetch failed';
+                state.errMess = action.error ? action.error.message : 'Fetch failed';
             });
     }
 });

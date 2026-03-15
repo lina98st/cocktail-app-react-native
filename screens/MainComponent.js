@@ -38,12 +38,13 @@ const FavoritesNavigator = () => {
 const Main = () => {
     const dispatch = useDispatch();
     useEffect(() => {
+            console.log('fetching initial cocktails');
         dispatch(fetchInitialCocktails());
     }, [dispatch]);
 
     return (
         <View style={{ flex: 1 }}>
-            <ButtomTabNav.Navigator>
+<ButtomTabNav.Navigator screenOptions={{ headerShown: false, tabBarStyle: { backgroundColor: '#0f1a14' }, tabBarActiveTintColor: '#eaf5ef', tabBarInactiveTintColor: '#a7c7b8' }}>
                 <ButtomTabNav.Screen name='HomeNav' component={HomeNavigator} options={{ title: 'Home' }} />
                 <ButtomTabNav.Screen name='FavoritesNav' component={FavoritesNavigator} options={{ title: 'Favorites' }} />
             </ButtomTabNav.Navigator>

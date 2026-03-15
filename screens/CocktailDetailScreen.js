@@ -16,17 +16,17 @@ for (let i = 1; i <= 15; i++) {
 }
 
 return (
-    <ScrollView>
+<ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollView}>
     <View style={styles.container}>
-        <Text>{cocktail.strDrink}</Text>
-        <Image source={{ uri: cocktail.strDrinkThumb }} />
-        <Text>{cocktail.strCategory}</Text>
+        <Text style={styles.title}>{cocktail.strDrink}</Text>
+<Image source={{ uri: cocktail.strDrinkThumb }} style={{ width: '100%', height: 250, borderRadius: 12 }} />
+        <Text style={styles.buttonText}>{cocktail.strCategory}</Text>
       {ingredients.map((ingredient) => (
-    <Text key={ingredient}>{ingredient}</Text>
+    <Text style={styles.buttonText} key={ingredient}>{ingredient}</Text>
 ))}
-        <Text>{cocktail.strInstructions}</Text>
+        <Text style={styles.buttonText}>{cocktail.strInstructions}</Text>
 <TouchableOpacity style={styles.button} onPress={() => dispatch(addFavorite(cocktail))}>
-    <Text>Add to Favorites</Text>
+    <Text style={styles.buttonText}>Add to Favorites</Text>
 </TouchableOpacity>
     </View>
     </ScrollView>
@@ -51,6 +51,16 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 16,
     },
+    title: {
+    color: '#eaf5ef',
+    fontSize: 24,
+    fontWeight: 'bold',
+    margin: 10,
+},
+scrollView: {
+    backgroundColor: '#0f1a14',
+    flexGrow: 1,
+},
 });
 
 export default CocktailDetailScreen;

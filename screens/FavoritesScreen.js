@@ -19,7 +19,7 @@ return (
             </TouchableOpacity>
         </View>
     )}
-    keyExtractor={(item) => item.idDrink}
+keyExtractor={(item, index) => index.toString()}
 />
 )
 }
