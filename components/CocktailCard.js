@@ -8,7 +8,7 @@ return (
 <Text style={styles.buttonText}>{cocktail.strDrink}</Text>
 </TouchableOpacity> 
 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CocktailDetail', { cocktail })}>
-    <Text>View Details</Text>
+<Text style={styles.buttonText}>View Details</Text>
 </TouchableOpacity>
 </View>
 )
