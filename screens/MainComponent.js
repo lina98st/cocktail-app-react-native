@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './HomeScreen';
 import FavoritesScreen from './FavoritesScreen';
+import SearchScreen from './SearchScreen';
 import CocktailDetailScreen from './CocktailDetailScreen';
 import { fetchInitialCocktails } from '../features/cocktails/cocktailsSlice';
 
@@ -35,6 +36,15 @@ const FavoritesNavigator = () => {
     );
 };
 
+const SearchNavigator = () => {
+    const Stack = createStackNavigator();
+    return (
+        <Stack.Navigator initialRouteName='Search' screenOptions={screenOptions}>
+            <Stack.Screen name='Search' component={SearchScreen} options={{ title: 'Search' }} />
+        </Stack.Navigator>
+    );
+};
+
 const Main = () => {
     const dispatch = useDispatch();
     useEffect(() => {
@@ -44,9 +54,10 @@ const Main = () => {
 
     return (
         <View style={{ flex: 1 }}>
-<ButtomTabNav.Navigator screenOptions={{ headerShown: false, tabBarStyle: { backgroundColor: '#0f1a14' }, tabBarActiveTintColor: '#eaf5ef', tabBarInactiveTintColor: '#a7c7b8' }}>
+         <ButtomTabNav.Navigator screenOptions={{ headerShown: false, tabBarStyle: { backgroundColor: '#0f1a14' }, tabBarActiveTintColor: '#eaf5ef', tabBarInactiveTintColor: '#a7c7b8' }}>
                 <ButtomTabNav.Screen name='HomeNav' component={HomeNavigator} options={{ title: 'Home' }} />
                 <ButtomTabNav.Screen name='FavoritesNav' component={FavoritesNavigator} options={{ title: 'Favorites' }} />
+                                <ButtomTabNav.Screen name='SearchNav' component={SearchNavigator} options={{ title: 'Search' }} />
             </ButtomTabNav.Navigator>
         </View>
     );

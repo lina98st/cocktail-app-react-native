@@ -52,7 +52,7 @@ button: {
     paddingHorizontal: 30,
 },
     buttonText: {
-        color: '#eaf5ef',
+        color: '#ffffff',
         fontWeight: 'bold',
         fontSize: 16,
     },
