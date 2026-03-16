@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
+import { View, 
+    Text, 
+    StyleSheet, 
+    TextInput, 
+    TouchableOpacity, 
+    Image, 
+    KeyboardAvoidingView, 
+    Platform } from 'react-native';
 
 const LoginScreen = ({ navigation }) => {
 const [username, setUsername] = useState('');
@@ -13,7 +20,10 @@ const handleLogin = () => {
 };
 
 return (
-<View style={styles.container}>
+<KeyboardAvoidingView 
+    style={styles.container}
+    behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+>
 <Image 
     source={require('../assets/cat-avatar.png')}
     style={styles.image}
@@ -42,7 +52,7 @@ return (
         >
             <Text style={styles.buttonText}>Login</Text>
             </TouchableOpacity>
-</View>
+</KeyboardAvoidingView>
 )
 }
 
