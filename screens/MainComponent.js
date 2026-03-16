@@ -41,6 +41,8 @@ const SearchNavigator = () => {
     return (
         <Stack.Navigator initialRouteName='Search' screenOptions={screenOptions}>
             <Stack.Screen name='Search' component={SearchScreen} options={{ title: 'Search' }} />
+            <Stack.Screen name='CocktailDetail' component={CocktailDetailScreen}
+                options={({ route }) => ({ title: route.params.cocktail.strDrink })} />
         </Stack.Navigator>
     );
 };
