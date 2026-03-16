@@ -14,7 +14,10 @@ const handleLogin = () => {
 
 return (
 <View style={styles.container}>
-
+<Image 
+    source={require('../assets/cat-avatar.png')}
+    style={styles.image}
+/>
 <TextInput
     style={styles.input}
     placeholder='Username'
@@ -71,6 +74,13 @@ button: {
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#a7c7b8',
+},
+image: {
+    width: 150,
+    height: 150,
+    borderRadius: 75,
+    alignSelf: 'center',
+    marginBottom: 20,
 },
 });
 
