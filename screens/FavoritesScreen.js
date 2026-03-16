@@ -13,7 +13,7 @@ return (
     data={favorites}
     renderItem={({ item }) => (
         <View style={styles.container}>
-            <Text>{item.strDrink}</Text>
+            <Text style={styles.buttonText}>{item.strDrink}</Text>
             <TouchableOpacity style={styles.button} onPress={() => dispatch(removeFavorite(item))}>
 <Text style={styles.buttonText}>Remove</Text>
             </TouchableOpacity>
