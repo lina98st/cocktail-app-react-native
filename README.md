@@ -3,6 +3,7 @@
 A mobile application built with React Native and Expo that allows users to browse, search, and save their favorite cocktail recipes using TheCocktailDB API.
 
 ## Features
+- Login screen with user authentication
 - Browse random cocktails on the home screen
 - Search cocktails by name
 - View cocktail details with ingredients and instructions
@@ -20,15 +21,19 @@ A mobile application built with React Native and Expo that allows users to brows
 - Expo Go app installed on your phone (available on App Store and Google Play)
 
 ## Installation
-```bash
+\```bash
 git clone https://github.com/lina98st/cocktail-app-react-native
 cd cocktail-app-react-native
 npm install
-```
+\```
 
 ## Getting Started
-```bash
+\```bash
 npx expo start
-```
+\```
 
 Scan the QR code in the terminal with your phone camera (iOS) or the Expo Go app (Android) to open the app.
+
+## Test Login
+- Username: admin
+- Password: 1234
