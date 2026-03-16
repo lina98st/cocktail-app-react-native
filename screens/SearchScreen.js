@@ -12,11 +12,13 @@ const cocktails = useSelector((state) => state.cocktails.cocktailsArray);
 
 return (
 <View style={styles.container}>
-    <TextInput
-     value={searchTerm}
-     onChangeText={(text) => setSearchTerm(text)}
-     placeholder='Search field'
-    >
+<TextInput
+    value={searchTerm}
+    onChangeText={(text) => setSearchTerm(text)}
+    placeholder='Search field'
+    placeholderTextColor='#a7c7b8'
+    style={{ color: '#eaf5ef' }}
+>
 
     </TextInput>
     <TouchableOpacity style={styles.button}
