@@ -4,7 +4,7 @@ const CocktailCard = ({ cocktail, navigation }) => {
 return (
     <View style={styles.container}>
     <TouchableOpacity>
-<Image source={{ uri: cocktail.strDrinkThumb }} />
+<Image style={styles.image} source={{ uri: cocktail.strDrinkThumb }} />
 <Text style={styles.buttonText}>{cocktail.strDrink}</Text>
 </TouchableOpacity> 
 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CocktailDetail', { cocktail })}>
@@ -34,6 +34,11 @@ button: {
         fontWeight: 'bold',
         fontSize: 16,
     },
+    image: {
+        width: '100%',
+        height: 200,
+        borderRadius: 8,
+    }
 });
 
 export default CocktailCard;
