@@ -6,7 +6,8 @@ import { View,
     TouchableOpacity, 
     Image, 
     KeyboardAvoidingView, 
-    Platform } from 'react-native';
+    Platform,
+    Alert } from 'react-native';
 
 const LoginScreen = ({ navigation }) => {
 const [username, setUsername] = useState('');
@@ -16,6 +17,10 @@ const handleLogin = () => {
     if (username === 'admin' && password === '1234') {
         //login sucessfull
         navigation.navigate('Main')
+    }
+    //login not sucessfull
+    else {
+        Alert.alert('Login failed', 'Wrong username or password');
     }
 };
 
