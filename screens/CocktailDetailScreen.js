@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView, Share } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { addFavorite, removeFavorite } from '../features/favorites/favoritesSlice';
@@ -15,6 +15,13 @@ for (let i = 1; i <= 15; i++) {
     }
 }
 
+const shareCocktail = () => {
+    Share.share({
+        title: cocktail.strDrink,
+ message: `Check out this cocktail: ${cocktail.strDrink} - ${cocktail.strInstructions}`,
+    })
+}
+
 return (
 <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollView}>
     <View style={styles.container}>
@@ -27,6 +34,9 @@ return (
         <Text style={styles.buttonText}>{cocktail.strInstructions}</Text>
 <TouchableOpacity style={styles.button} onPress={() => dispatch(addFavorite(cocktail))}>
     <Text style={styles.buttonText}>Add to Favorites</Text>
+</TouchableOpacity>
+<TouchableOpacity style={styles.button} onPress={shareCocktail}>
+    <Text style={styles.buttonText}>Share Cocktail</Text>
 </TouchableOpacity>
     </View>
     </ScrollView>
