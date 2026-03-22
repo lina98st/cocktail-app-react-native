@@ -38,3 +38,6 @@ Scan the QR code in the terminal with your phone camera (iOS) or the Expo Go app
 ## Test Login
 - Username: admin
 - Password: 1234
+
+## Demo
+[![Cocktail App Demo](https://img.youtube.com/vi/9ijJ1hSreWk/0.jpg)](https://youtube.com/shorts/9ijJ1hSreWk)
