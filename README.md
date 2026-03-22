@@ -44,3 +44,6 @@ Click the image below to watch the demo video:
 
 [![Cocktail App Demo](https://img.youtube.com/vi/9ijJ1hSreWk/0.jpg)](https://youtube.com/shorts/9ijJ1hSreWk)
 
+## Future Features
+- Filter cocktails by category
+- Dark mode support
