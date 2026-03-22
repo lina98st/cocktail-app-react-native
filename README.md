@@ -3,11 +3,12 @@
 A mobile application built with React Native and Expo that allows users to browse, search, and save their favorite cocktail recipes using TheCocktailDB API.
 
 ## Features
-- Login screen with user authentication
-- Browse random cocktails on the home screen
+- Login screen with user authentication and error handling
+- Browse random cocktails on the home screen with image previews
 - Search cocktails by name
 - View cocktail details with ingredients and instructions
 - Save and remove favorite cocktails
+- Share cocktails with friends
 - Surprise Cocktail button for a random drink
 
 ## Tech Stack
